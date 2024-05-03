@@ -1,5 +1,6 @@
 const UserType = {
-    Login: "user/login"
+    Login: "user/login",
+    Logout: "user/logout"
 }
 
 export default UserType;

@@ -9,6 +9,10 @@ let UserReducer = (state = InitialState, action) => {
         return {...state, currentUser: action.payload};
     }
 
+    if(action.type === UserType.Logout) {
+        return {...state, currentUser: null}
+    }
+
     return state;
 
 }
