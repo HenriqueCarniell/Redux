@@ -9,6 +9,7 @@ import Cart from "../cart/index";
 import * as Styles from "./styles";
 import { loginUser, logoutUser } from "../../redux/user/actions";
 import products from "../../data/products";
+import { selectProductsCount } from "../../redux/cart/cart.selector";
 
 function Header() {
   const [cartIsVisible, setCartIsVisible] = useState(false);
@@ -18,9 +19,7 @@ function Header() {
   const { currentUser } = useSelector((state) => state.userReducer);
   const { products } = useSelector((state) => state.cartReducer);
 
-  const productCount = useMemo(() => {
-    return products.reduce((acc, curr) => acc + curr.quantity, 0)
-  }, [products])
+  const productCount = useSelector(selectProductsCount)
 
   console.log(currentUser)
 
