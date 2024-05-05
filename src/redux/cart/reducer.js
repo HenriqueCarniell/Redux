@@ -28,7 +28,27 @@ const cartReducer = (state = InitialState, action) => {
             ...state,
             products: [...state.products, { ...action.payload, quantity: 1 }]
         }
+
     };
+
+    if (CartActionTypes.removeProduct === action.type) {
+        return {
+            ...state,
+            products: state.products.filter((product) => product.id !== action.payload)
+        }
+    }
+
+    if(CartActionTypes.addQuantity === action.type) {
+        return {
+            ...state,
+            products: state.products.map((product) =>
+                product.id === action.payload
+                    ? { ...product, quantity: product.quantity + 1 }
+                    : product
+            ),
+        }
+    }
+    
     return state
 }
 
