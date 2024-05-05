@@ -14,3 +14,8 @@ export const addQuantityProduct = (payload) => ({
     type: CartActionTypes.addQuantity,
     payload,
 });
+
+export const removeQuantityProduct = (payload) => ({
+    type: CartActionTypes.removeQuantity,
+    payload,
+});

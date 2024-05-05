@@ -48,6 +48,17 @@ const cartReducer = (state = InitialState, action) => {
             ),
         }
     }
+
+    if(CartActionTypes.removeQuantity === action.type) {
+        return {
+            ...state,
+            products: state.products.map((product) =>
+                product.id === action.payload
+                    ? { ...product, quantity: product.quantity > 0 ? product.quantity - 1 : 0}
+                    : product
+            ),
+        }
+    }
     
     return state
 }
